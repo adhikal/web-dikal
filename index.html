@@ -7,15 +7,15 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      --bg-dark: #070b14;
-      --card-bg: rgba(15, 23, 42, 0.75);
-      --primary: #00f2fe;
-      --secondary: #4facfe;
-      --accent: #38ef7d;
-      --accent-magenta: #f355da;
+      --bg-dark: #0a0304;
+      --card-bg: rgba(24, 7, 9, 0.85);
+      --primary: #ff2a4b;
+      --secondary: #ff5252;
+      --accent: #ff8533;
+      --accent-magenta: #ff0055;
       --text-main: #f8fafc;
-      --text-dim: #94a3b8;
-      --border-color: rgba(0, 242, 254, 0.25);
+      --text-dim: #cca3a8;
+      --border-color: rgba(255, 42, 75, 0.35);
     }
 
     * {
@@ -28,10 +28,10 @@
     body {
       background-color: var(--bg-dark);
       background-image: 
-        radial-gradient(circle at 15% 15%, rgba(0, 242, 254, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 85% 85%, rgba(243, 85, 218, 0.08) 0%, transparent 40%),
-        linear-gradient(rgba(7, 11, 20, 0.9), rgba(7, 11, 20, 0.9)),
-        repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(0, 242, 254, 0.03) 1px, rgba(0, 242, 254, 0.03) 2px);
+        radial-gradient(circle at 15% 15%, rgba(255, 42, 75, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 85% 85%, rgba(255, 0, 85, 0.12) 0%, transparent 40%),
+        linear-gradient(rgba(10, 3, 4, 0.92), rgba(10, 3, 4, 0.92)),
+        repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(255, 42, 75, 0.04) 1px, rgba(255, 42, 75, 0.04) 2px);
       background-size: 100% 100%, 100% 100%, 100% 100%, 100% 4px;
       color: var(--text-main);
       display: flex;
@@ -56,8 +56,8 @@
       -webkit-backdrop-filter: blur(12px);
       border: 1px solid var(--border-color);
       border-radius: 16px;
-      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6),
-                  inset 0 0 15px rgba(0, 242, 254, 0.05);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8),
+                  inset 0 0 15px rgba(255, 42, 75, 0.08);
       overflow: hidden;
       position: relative;
     }
@@ -78,8 +78,8 @@
       justify-content: space-between;
       align-items: center;
       padding: 10px 20px;
-      background: rgba(0, 0, 0, 0.4);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      background: rgba(0, 0, 0, 0.5);
+      border-bottom: 1px solid rgba(255, 42, 75, 0.15);
       font-size: 0.8rem;
       color: var(--text-dim);
     }
@@ -93,9 +93,9 @@
     .status-dot {
       width: 8px;
       height: 8px;
-      background-color: var(--accent);
+      background-color: var(--primary);
       border-radius: 50%;
-      box-shadow: 0 0 8px var(--accent);
+      box-shadow: 0 0 8px var(--primary);
       animation: pulse 2s infinite;
     }
 
@@ -124,14 +124,14 @@
       width: 110px;
       height: 110px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #1e293b, #0f172a);
+      background: linear-gradient(135deg, #1f0508, #0a0304);
       border: 2px solid var(--primary);
       display: flex;
       justify-content: center;
       align-items: center;
       font-size: 2.8rem;
       color: var(--primary);
-      box-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
+      box-shadow: 0 0 20px rgba(255, 42, 75, 0.4);
       position: relative;
       z-index: 2;
     }
@@ -178,7 +178,7 @@
     }
 
     .tag {
-      background: rgba(0, 242, 254, 0.1);
+      background: rgba(255, 42, 75, 0.12);
       border: 1px solid var(--border-color);
       color: var(--primary);
       padding: 4px 12px;
@@ -196,8 +196,8 @@
     }
 
     .info-item {
-      background: rgba(0, 0, 0, 0.3);
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 42, 75, 0.15);
       border-radius: 10px;
       padding: 15px;
       display: flex;
@@ -209,14 +209,14 @@
     .info-item:hover {
       border-color: var(--primary);
       transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(0, 242, 254, 0.1);
+      box-shadow: 0 5px 15px rgba(255, 42, 75, 0.2);
     }
 
     .info-icon {
       width: 45px;
       height: 45px;
       border-radius: 10px;
-      background: rgba(0, 242, 254, 0.1);
+      background: rgba(255, 42, 75, 0.15);
       color: var(--primary);
       display: flex;
       justify-content: center;
@@ -257,10 +257,10 @@
       display: flex;
       justify-content: space-around;
       align-items: center;
-      background: rgba(0, 0, 0, 0.4);
+      background: rgba(0, 0, 0, 0.45);
       padding: 20px 10px;
       border-radius: 10px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 42, 75, 0.15);
       flex-wrap: wrap;
       gap: 15px;
     }
@@ -277,7 +277,7 @@
     .node i {
       font-size: 1.5rem;
       color: var(--primary);
-      background: rgba(0, 242, 254, 0.1);
+      background: rgba(255, 42, 75, 0.12);
       padding: 12px;
       border-radius: 50%;
       border: 1px solid var(--border-color);
@@ -290,12 +290,12 @@
       min-width: 30px;
       max-width: 80px;
       position: relative;
-      opacity: 0.6;
+      opacity: 0.7;
     }
 
     /* Terminal Prompt Box */
     .terminal-box {
-      background: #030712;
+      background: #050102;
       border: 1px solid var(--border-color);
       border-radius: 10px;
       padding: 15px;
@@ -309,7 +309,7 @@
       margin-bottom: 12px;
     }
 
-    .dot-red { width: 10px; height: 10px; background: #ef4444; border-radius: 50%; }
+    .dot-red { width: 10px; height: 10px; background: #ff2a4b; border-radius: 50%; }
     .dot-yellow { width: 10px; height: 10px; background: #f59e0b; border-radius: 50%; }
     .dot-green { width: 10px; height: 10px; background: #10b981; border-radius: 50%; }
 
@@ -323,7 +323,7 @@
     }
 
     .log-line { color: var(--text-dim); }
-    .log-success { color: var(--accent); }
+    .log-success { color: #ff5252; }
     .log-highlight { color: var(--primary); }
 
     .terminal-input-line {
@@ -332,7 +332,7 @@
       gap: 8px;
     }
 
-    .prompt-label { color: var(--accent-magenta); font-weight: bold; }
+    .prompt-label { color: var(--primary); font-weight: bold; }
 
     .term-input {
       background: transparent;
@@ -354,9 +354,9 @@
     }
 
     .btn {
-      background: linear-gradient(135deg, var(--secondary), var(--primary));
+      background: linear-gradient(135deg, var(--accent-magenta), var(--primary));
       border: none;
-      color: #000;
+      color: #fff;
       padding: 10px 22px;
       border-radius: 8px;
       font-weight: 700;
@@ -366,12 +366,12 @@
       align-items: center;
       gap: 8px;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3);
+      box-shadow: 0 4px 15px rgba(255, 42, 75, 0.4);
     }
 
     .btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0, 242, 254, 0.5);
+      box-shadow: 0 6px 20px rgba(255, 42, 75, 0.6);
     }
 
     .btn-secondary {
@@ -382,7 +382,7 @@
     }
 
     .btn-secondary:hover {
-      background: rgba(0, 242, 254, 0.1);
+      background: rgba(255, 42, 75, 0.15);
       border-color: var(--primary);
     }
 
@@ -391,13 +391,13 @@
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background: #10b981;
+      background: var(--primary);
       color: #fff;
       padding: 10px 20px;
       border-radius: 8px;
       font-size: 0.85rem;
       font-weight: 600;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
       display: none;
       z-index: 1000;
     }
@@ -437,7 +437,7 @@
         
         <div class="tags">
           <span class="tag"><i class="fa-solid fa-graduation-cap"></i> SMK Taruna Bhakti</span>
-          <span class="tag"><i class="fa-solid fa-network-wired"></i> X TJKT 4</span>
+          <span class="tag"><i class="fa-solid fa-network-wired"></i> XI TJKT 4</span>
           <span class="tag"><i class="fa-solid fa-shield-halved"></i> Cyber Sec & Admin</span>
         </div>
       </div>
@@ -465,7 +465,7 @@
           <div class="info-icon"><i class="fa-solid fa-laptop-code"></i></div>
           <div class="info-text">
             <h4>Kelas / Jurusan</h4>
-            <p>X TJKT 4</p>
+            <p>XI TJKT 4</p>
           </div>
         </div>
 
@@ -495,7 +495,7 @@
 
       </div>
 
-      <!-- Topologi Jaringan Section -->
+      <!-- Network Topology Section -->
       <div class="network-section">
         <div class="section-title">
           <i class="fa-solid fa-diagram-project"></i> Network Infrastructure Topology
@@ -576,7 +576,7 @@
 === BIODATA SISWA TJKT ===
 Nama         : Adhikal Putra Perkasa
 Sekolah      : SMK Taruna Bhakti
-Kelas        : X TJKT 4
+Kelas        : XI TJKT 4
 Tanggal Lahir: 15 November 2009
 Keahlian     : Network Engineering, MikroTik, Linux OS
 ==========================
@@ -630,7 +630,7 @@ Keahlian     : Network Engineering, MikroTik, Linux OS
           break;
 
         case 'whoami':
-          appendLog("Adhikal Putra Perkasa | Siswa X TJKT 4 SMK Taruna Bhakti", "log-success");
+          appendLog("Adhikal Putra Perkasa | Siswa XI TJKT 4 SMK Taruna Bhakti", "log-success");
           break;
 
         case 'skills':
