@@ -3,138 +3,661 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Biodata - Adhikal Putra Perkasa</title>
+  <title>Cyber Biodata - Adhikal Putra Perkasa | TJKT</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+    :root {
+      --bg-dark: #070b14;
+      --card-bg: rgba(15, 23, 42, 0.75);
+      --primary: #00f2fe;
+      --secondary: #4facfe;
+      --accent: #38ef7d;
+      --accent-magenta: #f355da;
+      --text-main: #f8fafc;
+      --text-dim: #94a3b8;
+      --border-color: rgba(0, 242, 254, 0.25);
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Fira Code', 'Courier New', Consolas, monospace, sans-serif;
     }
 
     body {
-      background-color: #0f172a;
-      color: #f8fafc;
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(0, 242, 254, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 85% 85%, rgba(243, 85, 218, 0.08) 0%, transparent 40%),
+        linear-gradient(rgba(7, 11, 20, 0.9), rgba(7, 11, 20, 0.9)),
+        repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(0, 242, 254, 0.03) 1px, rgba(0, 242, 254, 0.03) 2px);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 100% 4px;
+      color: var(--text-main);
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
-      padding: 20px;
+      padding: 20px 10px;
     }
 
-    .card {
-      background: #1e293b;
-      border: 1px solid #334155;
-      border-radius: 16px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    .container {
       width: 100%;
-      max-width: 500px;
-      overflow: hidden;
-    }
-
-    .card-header {
-      background: linear-gradient(135deg, #2563eb, #1d4ed8);
-      padding: 30px 20px;
-      text-align: center;
-    }
-
-    .avatar-placeholder {
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
-      background-color: #3b82f6;
-      border: 4px solid #ffffff;
-      margin: 0 auto 15px auto;
+      max-width: 850px;
       display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 32px;
-      font-weight: bold;
-      color: #ffffff;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      flex-direction: column;
+      gap: 20px;
     }
 
-    .card-header h1 {
-      font-size: 1.4rem;
-      font-weight: 700;
-      letter-spacing: 0.5px;
+    /* Glassmorphism Card Base */
+    .glass-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6),
+                  inset 0 0 15px rgba(0, 242, 254, 0.05);
+      overflow: hidden;
+      position: relative;
     }
 
-    .card-header p {
-      font-size: 0.9rem;
-      color: #bfdbfe;
-      margin-top: 4px;
+    .glass-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--primary), var(--accent-magenta), transparent);
     }
 
-    .card-body {
-      padding: 25px;
-    }
-
-    .info-group {
+    /* Top Status Bar */
+    .sys-bar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 12px 0;
-      border-bottom: 1px solid #334155;
+      padding: 10px 20px;
+      background: rgba(0, 0, 0, 0.4);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 0.8rem;
+      color: var(--text-dim);
     }
 
-    .info-group:last-child {
-      border-bottom: none;
+    .sys-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .label {
-      color: #94a3b8;
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background-color: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--accent);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.4; }
+      50% { opacity: 1; }
+      100% { opacity: 0.4; }
+    }
+
+    /* Profile Header */
+    .profile-header {
+      padding: 30px 25px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .avatar-wrapper {
+      position: relative;
+      margin-bottom: 18px;
+    }
+
+    .avatar-box {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      border: 2px solid var(--primary);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2.8rem;
+      color: var(--primary);
+      box-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
+      position: relative;
+      z-index: 2;
+    }
+
+    .avatar-ring {
+      position: absolute;
+      top: -6px;
+      left: -6px;
+      right: -6px;
+      bottom: -6px;
+      border: 1px dashed var(--accent-magenta);
+      border-radius: 50%;
+      animation: spin 12s linear infinite;
+    }
+
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+
+    .user-name {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      background: linear-gradient(90deg, #ffffff, var(--primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 6px;
+    }
+
+    .user-title {
       font-size: 0.9rem;
+      color: var(--secondary);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .tag {
+      background: rgba(0, 242, 254, 0.1);
+      border: 1px solid var(--border-color);
+      color: var(--primary);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
       font-weight: 500;
     }
 
-    .value {
-      color: #f8fafc;
-      font-size: 0.95rem;
-      font-weight: 600;
-      text-align: right;
+    /* Main Info Content */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 15px;
+      padding: 20px;
     }
 
-    .badge {
-      background-color: #0369a1;
-      color: #e0f2fe;
-      padding: 4px 10px;
-      border-radius: 6px;
+    .info-item {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      transition: all 0.3s ease;
+    }
+
+    .info-item:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 242, 254, 0.1);
+    }
+
+    .info-icon {
+      width: 45px;
+      height: 45px;
+      border-radius: 10px;
+      background: rgba(0, 242, 254, 0.1);
+      color: var(--primary);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.3rem;
+    }
+
+    .info-text h4 {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      margin-bottom: 3px;
+    }
+
+    .info-text p {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    /* Network Topology Section */
+    .network-section {
+      padding: 20px;
+    }
+
+    .section-title {
+      font-size: 0.9rem;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .topology-container {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 20px 10px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .node {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+    }
+
+    .node i {
+      font-size: 1.5rem;
+      color: var(--primary);
+      background: rgba(0, 242, 254, 0.1);
+      padding: 12px;
+      border-radius: 50%;
+      border: 1px solid var(--border-color);
+    }
+
+    .line {
+      flex: 1;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary), var(--accent-magenta));
+      min-width: 30px;
+      max-width: 80px;
+      position: relative;
+      opacity: 0.6;
+    }
+
+    /* Terminal Prompt Box */
+    .terminal-box {
+      background: #030712;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 15px;
+      font-family: 'Fira Code', monospace;
       font-size: 0.85rem;
+    }
+
+    .terminal-header {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .dot-red { width: 10px; height: 10px; background: #ef4444; border-radius: 50%; }
+    .dot-yellow { width: 10px; height: 10px; background: #f59e0b; border-radius: 50%; }
+    .dot-green { width: 10px; height: 10px; background: #10b981; border-radius: 50%; }
+
+    .terminal-logs {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      max-height: 140px;
+      overflow-y: auto;
+      margin-bottom: 10px;
+    }
+
+    .log-line { color: var(--text-dim); }
+    .log-success { color: var(--accent); }
+    .log-highlight { color: var(--primary); }
+
+    .terminal-input-line {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .prompt-label { color: var(--accent-magenta); font-weight: bold; }
+
+    .term-input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--text-main);
+      font-family: inherit;
+      font-size: 0.85rem;
+      width: 100%;
+    }
+
+    /* Action Buttons */
+    .action-bar {
+      padding: 20px;
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      background: linear-gradient(135deg, var(--secondary), var(--primary));
+      border: none;
+      color: #000;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 242, 254, 0.5);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      box-shadow: none;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(0, 242, 254, 0.1);
+      border-color: var(--primary);
+    }
+
+    /* Notification Toast */
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #10b981;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      display: none;
+      z-index: 1000;
+    }
+
+    @media (max-width: 600px) {
+      .topology-container { flex-direction: column; gap: 10px; }
+      .line { width: 2px; height: 25px; min-width: auto; }
+      .user-name { font-size: 1.4rem; }
     }
   </style>
 </head>
 <body>
 
-  <div class="card">
-    <div class="card-header">
-      <div class="avatar-placeholder">APP</div>
-      <h1>Adhikal Putra Perkasa</h1>
-      <p>Siswa Teknik Jaringan Komputer & Telekomunikasi</p>
-    </div>
-    
-    <div class="card-body">
-      <div class="info-group">
-        <span class="label">Nama Lengkap</span>
-        <span class="value">Adhikal Putra Perkasa</span>
+  <div class="container">
+    <div class="glass-card">
+      
+      <!-- Top System Bar -->
+      <div class="sys-bar">
+        <div class="sys-status">
+          <span class="status-dot"></span>
+          <span>HOST: 192.168.88.1 (MIKROTIK_GW)</span>
+        </div>
+        <div>SYS_TIME: <span id="clock">00:00:00</span></div>
       </div>
 
-      <div class="info-group">
-        <span class="label">Sekolah</span>
-        <span class="value">SMK Taruna Bhakti</span>
+      <!-- Header Info -->
+      <div class="profile-header">
+        <div class="avatar-wrapper">
+          <div class="avatar-box">
+            <i class="fa-solid fa-server"></i>
+          </div>
+          <div class="avatar-ring"></div>
+        </div>
+        
+        <h1 class="user-name">ADHIKAL PUTRA PERKASA</h1>
+        <div class="user-title">Junior Network & System Admin</div>
+        
+        <div class="tags">
+          <span class="tag"><i class="fa-solid fa-graduation-cap"></i> SMK Taruna Bhakti</span>
+          <span class="tag"><i class="fa-solid fa-network-wired"></i> X TJKT 4</span>
+          <span class="tag"><i class="fa-solid fa-shield-halved"></i> Cyber Sec & Admin</span>
+        </div>
       </div>
 
-      <div class="info-group">
-        <span class="label">Kelas</span>
-        <span class="value"><span class="badge">X TJKT 4</span></span>
+      <!-- Main Biodata Grid -->
+      <div class="info-grid">
+        
+        <div class="info-item">
+          <div class="info-icon"><i class="fa-solid fa-user-gear"></i></div>
+          <div class="info-text">
+            <h4>Nama Lengkap</h4>
+            <p>Adhikal Putra Perkasa</p>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon"><i class="fa-solid fa-building-columns"></i></div>
+          <div class="info-text">
+            <h4>Institusi</h4>
+            <p>SMK Taruna Bhakti</p>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon"><i class="fa-solid fa-laptop-code"></i></div>
+          <div class="info-text">
+            <h4>Kelas / Jurusan</h4>
+            <p>X TJKT 4</p>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon"><i class="fa-solid fa-calendar-check"></i></div>
+          <div class="info-text">
+            <h4>Tanggal Lahir</h4>
+            <p>15 November 2009</p>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon"><i class="fa-solid fa-microchip"></i></div>
+          <div class="info-text">
+            <h4>Minat & Keahlian</h4>
+            <p>MikroTik, Linux, Docker, Cisco</p>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon"><i class="fa-solid fa-globe"></i></div>
+          <div class="info-text">
+            <h4>Lokasi Target</h4>
+            <p>Jatisampurna, Bekasi</p>
+          </div>
+        </div>
+
       </div>
 
-      <div class="info-group">
-        <span class="label">Tanggal Lahir</span>
-        <span class="value">15 November 2009</span>
+      <!-- Topologi Jaringan Section -->
+      <div class="network-section">
+        <div class="section-title">
+          <i class="fa-solid fa-diagram-project"></i> Network Infrastructure Topology
+        </div>
+        <div class="topology-container">
+          <div class="node">
+            <i class="fa-solid fa-cloud"></i>
+            <span>Internet ISP</span>
+          </div>
+          <div class="line"></div>
+          <div class="node">
+            <i class="fa-solid fa-router"></i>
+            <span>MikroTik Router</span>
+          </div>
+          <div class="line"></div>
+          <div class="node">
+            <i class="fa-solid fa-network-wired"></i>
+            <span>Switch / VLAN</span>
+          </div>
+          <div class="line"></div>
+          <div class="node">
+            <i class="fa-solid fa-desktop"></i>
+            <span>Client TJKT-4</span>
+          </div>
+        </div>
       </div>
+
+      <!-- Interactive Cyber Terminal -->
+      <div class="network-section">
+        <div class="section-title">
+          <i class="fa-solid fa-terminal"></i> Interactive Shell Terminal
+        </div>
+        <div class="terminal-box">
+          <div class="terminal-header">
+            <span class="dot-red"></span>
+            <span class="dot-yellow"></span>
+            <span class="dot-green"></span>
+          </div>
+          <div class="terminal-logs" id="termLogs">
+            <div class="log-line">System initialized. Type <span class="log-highlight">'help'</span> or <span class="log-highlight">'skills'</span> to execute commands.</div>
+          </div>
+          <div class="terminal-input-line">
+            <span class="prompt-label">adhikal@tjkt-4:~$</span>
+            <input type="text" class="term-input" id="termInput" placeholder="Ketik perintah di sini..." autocomplete="off">
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="action-bar">
+        <button class="btn" onclick="copyBiodata()">
+          <i class="fa-solid fa-copy"></i> Salin Data Profile
+        </button>
+        <button class="btn btn-secondary" onclick="runPingTest()">
+          <i class="fa-solid fa-bolt"></i> Test Ping Network
+        </button>
+      </div>
+
     </div>
   </div>
 
+  <!-- Toast Notif -->
+  <div class="toast" id="toast">Berhasil disalin ke clipboard!</div>
+
+  <script>
+    // Live Clock
+    function updateClock() {
+      const now = new Date();
+      const timeStr = now.toTimeString().split(' ')[0];
+      document.getElementById('clock').textContent = timeStr;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // Copy Biodata Function
+    function copyBiodata() {
+      const bioText = `
+=== BIODATA SISWA TJKT ===
+Nama         : Adhikal Putra Perkasa
+Sekolah      : SMK Taruna Bhakti
+Kelas        : X TJKT 4
+Tanggal Lahir: 15 November 2009
+Keahlian     : Network Engineering, MikroTik, Linux OS
+==========================
+      `.trim();
+
+      navigator.clipboard.writeText(bioText).then(() => {
+        showToast("Data biodata berhasil disalin!");
+      });
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.style.display = 'block';
+      setTimeout(() => {
+        toast.style.display = 'none';
+      }, 3000);
+    }
+
+    // Terminal Commands System
+    const termInput = document.getElementById('termInput');
+    const termLogs = document.getElementById('termLogs');
+
+    termInput.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        const cmd = this.value.trim().toLowerCase();
+        if (cmd !== '') {
+          appendLog(`adhikal@tjkt-4:~$ ${cmd}`, 'log-highlight');
+          processCommand(cmd);
+          this.value = '';
+          termLogs.scrollTop = termLogs.scrollHeight;
+        }
+      }
+    });
+
+    function appendLog(text, className = 'log-line') {
+      const line = document.createElement('div');
+      line.className = className;
+      line.textContent = text;
+      termLogs.appendChild(line);
+    }
+
+    function processCommand(cmd) {
+      switch(cmd) {
+        case 'help':
+          appendLog("Perintah yang tersedia:");
+          appendLog(" - whoami  : Menampilkan identitas user");
+          appendLog(" - skills  : Skill & keahlian bidang TJKT");
+          appendLog(" - ping    : Tes koneksi ke server gateway");
+          appendLog(" - clear   : Membersihkan layar terminal");
+          break;
+
+        case 'whoami':
+          appendLog("Adhikal Putra Perkasa | Siswa X TJKT 4 SMK Taruna Bhakti", "log-success");
+          break;
+
+        case 'skills':
+          appendLog("[+] Networking: MikroTik RouterOS, Cisco Packet Tracer, Subnetting IPv4");
+          appendLog("[+] Linux Admin: Ubuntu Server, Apache2, Nginx Web Server");
+          appendLog("[+] Virtualisasi: Docker, VirtualBox", "log-success");
+          break;
+
+        case 'ping':
+          runPingTest();
+          break;
+
+        case 'clear':
+          termLogs.innerHTML = '';
+          break;
+
+        default:
+          appendLog(`Command not found: '${cmd}'. Ketik 'help' untuk daftar perintah.`, 'log-line');
+      }
+    }
+
+    function runPingTest() {
+      appendLog("PING 192.168.88.1 (192.168.88.1) 56(84) bytes of data.");
+      setTimeout(() => appendLog("64 bytes from 192.168.88.1: icmp_seq=1 ttl=64 time=1.12 ms", "log-success"), 300);
+      setTimeout(() => appendLog("64 bytes from 192.168.88.1: icmp_seq=2 ttl=64 time=0.98 ms", "log-success"), 600);
+      setTimeout(() => appendLog("--- 192.168.88.1 ping statistics --- 0% packet loss", "log-highlight"), 900);
+    }
+  </script>
 </body>
 </html>
